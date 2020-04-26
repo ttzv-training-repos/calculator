@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <div class="calc">
+            <div class="outline">
+                <div class="display">
+                    <div class="disp-operations"></div>
+                    <div class="current-result">0</div>
+                    <hr>
+                </div>
+                
+                <div class="keyboard">
+                    <div class="standard-kb">
+                        <div class="button operation" style="grid-area: del;" data-input="C" data-op-name="clear">C</div>
+                        <div class="button operation" style="grid-area: div;" data-input=" / " data-op-name="divide">/</div>
+                        <div class="button operation" style="grid-area: mul;" data-input=" * " data-op-name="multiply">*</div>
+                        <div class="button operation" style="grid-area: sub;" data-input=" - " data-op-name="subtract">-</div>
+                        <div class="button operation" style="grid-area: res; grid-row: 4 / 6; height: 170px;" data-input="=" data-op-name="result">=</div>
+                        <div class="button operation" style="grid-area: add; grid-row: 2 / 4; height: 170px;" data-input=" + " data-op-name="add">+</div>
+                        <div class="button" style="grid-area: dot;" data-input=".">.</div>
+                        <div class="button" style="grid-area: zero; grid-column: 1 / 3; width: 170px;" data-input="0">0</div>
+                        <div class="button" style="grid-area: one;" data-input="1">1</div>
+                        <div class="button" style="grid-area: two;" data-input="2">2</div>
+                        <div class="button" style="grid-area: three;" data-input="3">3</div>
+                        <div class="button" style="grid-area: four;" data-input="4">4</div>
+                        <div class="button" style="grid-area: five;" data-input="5">5</div>
+                        <div class="button" style="grid-area: six;" data-input="6">6</div>
+                        <div class="button" style="grid-area: seven;" data-input="7">7</div>
+                        <div class="button" style="grid-area: eight;" data-input="8">8</div>
+                        <div class="button" style="grid-area: nine;" data-input="9">9</div>   
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="index.js"></script>
+    </body>
+</html>

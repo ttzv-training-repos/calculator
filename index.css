@@ -1,0 +1,98 @@
+body{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex: 1;
+    min-height: 100vh;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.calc{
+    width: 400px;
+    height: fit-content;
+}
+
+.outline{
+    border: 3px solid gray;
+    height: 100%;
+}
+
+.display{
+    color: rgb(177, 177, 177);
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background: linear-gradient(0deg, #666666 10%, rgb(51, 51, 51) 100%);
+}
+
+.disp-operations{
+    height: 20px;
+    margin: 5px;
+    align-self: flex-end;
+}
+
+.current-result{
+    margin-top: 15px;
+    font-size: 2.5em;;
+    align-self: flex-end;
+}
+
+.keyboard{
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(180deg, #666666 0%, #000 100%);
+}
+
+
+.standard-kb{
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: 80px 80px 80px 80px;
+    grid-template-rows: 80px 80px 80px 80px 80px;
+    gap: 10px 10px;
+    grid-template-areas: 
+    "del div mul sub"
+    "seven eight nine add"
+    "four five six add"
+    "one two three res"
+    "zero zero dot res";
+    
+}
+
+.button{
+    font-size: 2em;
+    border: 1px solid gray;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.1s;
+    background: radial-gradient(ellipse farthest-corner at 96% 3%, #e0e0e0 0%, #525252 100%); 
+    border-radius: 10px;
+}
+
+.operation{
+    background: radial-gradient(ellipse at 100% 0%, #d4d4d4 0%, #393939 100%);
+}
+
+.button:hover{
+    opacity: 0.85;
+}
+
+.button.click{
+    opacity: 1;
+}
+
+hr{
+    background-color: transparent;
+    background: transparent;
+    //width: 90%;
+    //border: none;
+    margin-right: 10px;
+    margin-left: 10px;
+}
