@@ -83,6 +83,7 @@ class Evaluator{
                 console.error('no such operation: ' + this.operation);
                 break;
         }
+        this.updateHistory();
         this.arg1 = result;
         return result;
     } 
@@ -108,11 +109,35 @@ class Evaluator{
             return this.history.join('');
         }
     }
-}
 
+    updateHistory(){
+        if(this.history.length == 0){
+            this.history.push(this.arg1);
+            this.history.push(this.getSymbol(this.operation));
+            this.history.push(this.arg2);
+        }
+    }
+
+    clearHistory(){
+        this.history = [];
+    }
+}
 
 const basicMath = new BasicMath();
 const evaluator = new Evaluator(basicMath);
+
+const delBtn = document.querySelector('.btn-del');
+delBtn.addEventListener('click', handleDel);
+
+function handleDel(){
+    let currentDisplay = getInput().toString();
+    if(currentDisplay.length > 1){
+        canOverwriteInput = true;
+        updateMainDisplay(currentDisplay.slice(0, -1));
+    } else {
+        clear();
+    }
+}
 
 const buttons = document.querySelectorAll('.button');
 
@@ -122,6 +147,26 @@ buttons.forEach(button => {
     button.addEventListener('mouseup', btnPressedStyle);
     button.addEventListener('mouseleave', delBtnPressedStyle);
 });
+
+const btnsArr = [...buttons];
+
+window.addEventListener('keydown', handleKeyboardInput);
+
+function handleKeyboardInput(e){
+    let btn = btnsArr.filter(b => {
+        let btnDataKey = b.getAttribute('data-key');
+        if(btnDataKey.includes(' ')){
+           let [dataKey,dataKeyAlt] = btnDataKey.split(' ');
+           return dataKey == e.keyCode || dataKeyAlt == e.keyCode;
+        }
+        return btnDataKey == e.keyCode;
+    })[0];
+    if(!btn){
+        btn = document.querySelector(`div[data-key="${e.keyCode}"]`);
+    }
+    console.log(btn);
+    btn.click();
+}
 
 function btnPressedStyle(){
     this.classList.toggle('click');
@@ -149,8 +194,6 @@ let canOverwriteInput;
 function digitInput(input){
     if(evaluated){
         clear();
-        evaluated = false;
-        operationSelected = false;
     }
     updateMainDisplay(input);
     canOverwriteInput = false;
@@ -185,6 +228,12 @@ function evaluateResult(){
 }
     
 function handleEvaluation(){
+    if(!evaluated && operationSelected && digitSelected){
+        evaluator.clearArg2();
+    }
+    if(evaluated){
+        evaluator.clearHistory();
+    }
     if(operationSelected){
         evaluator.put(getInput());
     }
@@ -242,5 +291,7 @@ function clear() {
     cResult.textContent = '0';
     cResultSub.textContent = ''
     evaluator.clearAll();
+    evaluated = false;
+    operationSelected = false;
 }
 
