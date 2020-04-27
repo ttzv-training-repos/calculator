@@ -17,6 +17,10 @@ body{
     display: flex;
 }
 
+.title:hover{
+    color: rgb(63, 63, 63);
+}
+
 .calc{
     width: 400px;
     height: fit-content;
@@ -120,4 +124,9 @@ hr{
 footer{
     margin-top: 20px;
     text-align: center;
+}
+
+.title-link{
+    text-decoration: none;
+    color: black;
 }
